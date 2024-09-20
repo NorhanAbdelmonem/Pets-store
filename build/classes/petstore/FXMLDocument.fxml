@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="petstore.FXMLDocumentController">
    <children>
       <AnchorPane fx:id="mainform" prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -25,13 +25,13 @@
                   </Label>
                   <TextField fx:id="username" layoutX="50.0" layoutY="185.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="200.0" promptText="Username" />
                   <PasswordField fx:id="password" layoutX="50.0" layoutY="226.0" prefHeight="30.0" prefWidth="200.0" promptText="Password" />
-                  <Button fx:id="login" layoutX="50.0" layoutY="276.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Login" />
-                  <Button fx:id="close" layoutX="246.0" layoutY="2.0" minWidth="33.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="33.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
+                  <Button fx:id="login" layoutX="50.0" layoutY="276.0" mnemonicParsing="false" onAction="#login" prefHeight="30.0" prefWidth="200.0" text="Login" />
+                  <Button fx:id="close" layoutX="246.0" layoutY="2.0" minWidth="33.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="33.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
                      <graphic>
                        
                      </graphic>
                      <graphic>
-                        <FontAwesomeIcon glyphName="CLOSE" />
+                        <FontAwesomeIcon glyphName="CLOSE" size="1.2em" wrappingWidth="14.449999809265137" />
                      </graphic>
                   </Button>
                   <FontAwesomeIcon glyphName="USER" layoutX="118.0" layoutY="83.0" size="6em" wrappingWidth="64.0" />

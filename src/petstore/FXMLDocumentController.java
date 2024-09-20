@@ -17,6 +17,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import java.sql.*;
 import java.sql.PreparedStatement;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 /**
  *
  * @author Norhan
@@ -41,17 +47,52 @@ public class FXMLDocumentController implements Initializable {
     System.exit(0);
     
     }
-    private Connection con;
+
+private java.sql.Connection connect;
     private PreparedStatement prepare;
+ 
     private ResultSet result;
-    
-    public void login(){
+
+    public void login() throws SQLException{
     String sql="Select * FROM admin WHERE username=? and password =?"; 
-    con =(Connection) database.getCon();
+   connect=database.getCon();
     try{
-   prepare = con.
+  prepare=connect.prepareStatement(sql);
    prepare.setString(1,username.getText());
+      prepare.setString(2,password.getText());
+      result=prepare.executeQuery();
+      Alert alert;
+      if(username.getText().isEmpty()||password.getText().isEmpty()){
+      alert=new Alert(AlertType.ERROR);
+      alert.setTitle("ERROR MESSAGE");
+      alert.setHeaderText(null);
+      alert.setContentText("Please fill all the blank feilds");
+      alert.showAndWait();
+      }
+      if(result.next()){
+             alert=new Alert(AlertType.INFORMATION);
+      alert.setTitle("INFORMATION MESSAGE");
+      alert.setHeaderText(null);
+      alert.setContentText("SUCCESFULLY LOGIN");
+      alert.showAndWait(); 
+      
+          Parent root=FXMLLoader.load(getClass().getResource("dashboard.fxml"));
+          Stage stage=new Stage();
+          Scene scene =new Scene(root);
+          stage.setScene(scene);
+          stage.show();
+        
+      
     }
+      else{
+      alert=new Alert(AlertType.ERROR);
+      alert.setTitle("ERROR MESSAGE");
+      alert.setHeaderText(null);
+      alert.setContentText("Wrong Username/Password");
+      alert.showAndWait();
+      
+      
+      }}
     catch (Exception e) {
             e.printStackTrace();
         }}
