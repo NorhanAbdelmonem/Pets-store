@@ -23,6 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 /**
  *
  * @author Norhan
@@ -70,16 +71,19 @@ private java.sql.Connection connect;
       alert.showAndWait();
       }
       if(result.next()){
+         
              alert=new Alert(AlertType.INFORMATION);
       alert.setTitle("INFORMATION MESSAGE");
       alert.setHeaderText(null);
       alert.setContentText("SUCCESFULLY LOGIN");
       alert.showAndWait(); 
-      
+     
+      login.getScene().getWindow().hide();
           Parent root=FXMLLoader.load(getClass().getResource("dashboard.fxml"));
           Stage stage=new Stage();
           Scene scene =new Scene(root);
           stage.setScene(scene);
+          stage.initStyle(StageStyle.TRANSPARENT);
           stage.show();
         
       
