@@ -21,7 +21,7 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="petstore.dashboardController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" visible="false">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
             <AnchorPane layoutX="233.0" layoutY="38.0" prefHeight="555.0" prefWidth="861.0" visible="false">
                <children>
@@ -160,8 +160,8 @@
                            </font>
                         </Button>
                         <FontAwesomeIcon glyphName="SHOPPING_CART" layoutX="23.0" layoutY="353.0" size="1.8em" />
-                        <Button fx:id="logout_btn" layoutX="5.0" layoutY="479.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="39.0" />
-                        <FontAwesomeIcon glyphName="SIGN_OUT" layoutX="7.0" layoutY="511.0" size="3em" wrappingWidth="12.0" />
+                        <Button fx:id="logout_btn" layoutX="5.0" layoutY="479.0" mnemonicParsing="false" onAction="#logout" prefHeight="39.0" prefWidth="39.0" />
+                        <FontAwesomeIcon glyphName="SIGN_OUT" layoutX="13.0" layoutY="505.0" size="2em" wrappingWidth="22.285715103149414" />
                         <Label layoutX="52.0" layoutY="488.0" text="Sign Out">
                            <font>
                               <Font name="Calibri" size="14.0" />
@@ -171,7 +171,7 @@
                         <FontAwesomeIcon glyphName="PAW" layoutX="24.0" layoutY="120.0" size="3em" />
                         <FontAwesomeIcon glyphName="PAW" layoutX="8.0" layoutY="74.0" size="3em" />
                         <FontAwesomeIcon glyphName="PAW" layoutX="170.0" layoutY="517.0" size="3em" text="" />
-                        <FontAwesomeIcon glyphName="PAW" layoutX="153.0" layoutY="480.0" size="3em" text="" />
+                        <FontAwesomeIcon glyphName="PAW" layoutX="150.0" layoutY="473.0" size="3em" text="" />
                         <Label fx:id="username" layoutX="61.0" layoutY="164.0" prefHeight="24.0" prefWidth="65.0" text="Lightou" textFill="#0a0909">
                            <font>
                               <Font name="Arial Black" size="15.0" />
@@ -232,7 +232,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="218.0" prefHeight="313.0" prefWidth="862.0" style="-fx-background-color: white;">
+                        <AnchorPane layoutX="10.0" layoutY="229.0" prefHeight="302.0" prefWidth="862.0" style="-fx-background-color: white;">
                            <children>
                               <BarChart fx:id="income_datachart" layoutX="110.0" layoutY="26.0" prefHeight="287.0" prefWidth="680.0" title="Income Data Chart">
                                 <xAxis>

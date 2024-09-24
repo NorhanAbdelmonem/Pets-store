@@ -21,7 +21,7 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="petstore.dashboardController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" visible="false">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
             <AnchorPane layoutX="233.0" layoutY="38.0" prefHeight="555.0" prefWidth="861.0" visible="false">
                <children>
@@ -130,20 +130,9 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane fx:id="main_form" prefHeight="621.0" prefWidth="1052.0">
          <children>
-            <AnchorPane layoutY="-5.0" prefHeight="38.0" prefWidth="1100.0" style="-fx-background-color: white;">
-               <children>
-                  <Button fx:id="close" layoutX="1061.0" layoutY="2.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="39.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0" />
-                  <Button fx:id="minimize" layoutX="1022.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" prefHeight="25.0" prefWidth="39.0">
-                     <graphic>
-                        <FontAwesomeIcon glyphName="MINUS" size="1.2em" />
-                     </graphic>
-                  </Button>
-                  <FontAwesomeIcon glyphName="CLOSE" layoutX="1075.0" layoutY="18.0" size="1.2em" />
-               </children>
-            </AnchorPane>
-            <BorderPane layoutY="61.0" prefHeight="600.0" prefWidth="1100.0" style="-fx-background-color: null;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <BorderPane layoutY="27.0" prefHeight="637.0" prefWidth="1100.0" style="-fx-background-color: null;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
                <left>
                   <AnchorPane prefHeight="526.0" prefWidth="218.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
                      <children>
@@ -171,18 +160,18 @@
                            </font>
                         </Button>
                         <FontAwesomeIcon glyphName="SHOPPING_CART" layoutX="23.0" layoutY="353.0" size="1.8em" />
-                        <Button fx:id="logout_btn" layoutY="560.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="39.0" />
-                        <FontAwesomeIcon glyphName="SIGN_OUT" layoutX="8.0" layoutY="592.0" size="3em" wrappingWidth="12.0" />
-                        <Label layoutX="44.0" layoutY="569.0" text="Sign Out">
+                        <Button fx:id="logout_btn" layoutX="5.0" layoutY="479.0" mnemonicParsing="false" onAction="#logout" prefHeight="39.0" prefWidth="39.0" />
+                        <FontAwesomeIcon glyphName="SIGN_OUT" layoutX="13.0" layoutY="505.0" size="2em" wrappingWidth="22.285715103149414" />
+                        <Label layoutX="52.0" layoutY="488.0" text="Sign Out">
                            <font>
                               <Font name="Calibri" size="14.0" />
                            </font>
                         </Label>
                         <Label layoutX="142.0" layoutY="26.0" />
-                        <FontAwesomeIcon glyphName="PAW" layoutX="3.0" layoutY="38.0" size="3em" />
-                        <FontAwesomeIcon glyphName="PAW" layoutX="36.0" layoutY="55.0" size="3em" />
-                        <FontAwesomeIcon glyphName="PAW" layoutX="164.0" layoutY="556.0" size="3em" text="" />
-                        <FontAwesomeIcon glyphName="PAW" layoutX="184.0" layoutY="592.0" size="3em" text="" />
+                        <FontAwesomeIcon glyphName="PAW" layoutX="24.0" layoutY="120.0" size="3em" />
+                        <FontAwesomeIcon glyphName="PAW" layoutX="8.0" layoutY="74.0" size="3em" />
+                        <FontAwesomeIcon glyphName="PAW" layoutX="170.0" layoutY="517.0" size="3em" text="" />
+                        <FontAwesomeIcon glyphName="PAW" layoutX="150.0" layoutY="473.0" size="3em" text="" />
                         <Label fx:id="username" layoutX="61.0" layoutY="164.0" prefHeight="24.0" prefWidth="65.0" text="Lightou" textFill="#0a0909">
                            <font>
                               <Font name="Arial Black" size="15.0" />
@@ -194,7 +183,7 @@
                <center>
                   <AnchorPane fx:id="home_form" prefHeight="562.0" prefWidth="856.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane layoutX="8.0" layoutY="64.0" prefHeight="171.0" prefWidth="859.0" style="-fx-background-color: white;">
+                        <AnchorPane layoutX="12.0" layoutY="20.0" prefHeight="171.0" prefWidth="859.0" style="-fx-background-color: white;">
                            <children>
                               <AnchorPane layoutX="14.0" layoutY="8.0" prefHeight="154.0" prefWidth="200.0" style="-fx-background-color: gray;">
                                  <children>
@@ -243,9 +232,9 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="6.0" layoutY="253.0" prefHeight="340.0" prefWidth="862.0" style="-fx-background-color: white;">
+                        <AnchorPane layoutX="10.0" layoutY="229.0" prefHeight="302.0" prefWidth="862.0" style="-fx-background-color: white;">
                            <children>
-                              <BarChart fx:id="income_datachart" layoutX="81.0" layoutY="53.0" prefHeight="287.0" prefWidth="680.0" title="Income Data Chart">
+                              <BarChart fx:id="income_datachart" layoutX="110.0" layoutY="26.0" prefHeight="287.0" prefWidth="680.0" title="Income Data Chart">
                                 <xAxis>
                                   <CategoryAxis side="BOTTOM" />
                                 </xAxis>
@@ -258,6 +247,16 @@
                      </children>
                   </AnchorPane>
                </center>
+               <top>
+                  <AnchorPane prefHeight="54.0" prefWidth="1100.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="close" layoutX="1045.0" layoutY="19.0" mnemonicParsing="false" onAction="#close" prefHeight="21.0" prefWidth="55.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="19.0" />
+                        <Button fx:id="minimize" layoutX="991.0" layoutY="19.0" mnemonicParsing="false" onAction="#minimize" prefHeight="23.0" prefWidth="55.0" />
+                        <FontAwesomeIcon glyphName="CLOSE" layoutX="1067.0" layoutY="36.0" size="1.2em" />
+                        <FontAwesomeIcon glyphName="MINUS" layoutX="1013.0" layoutY="37.0" size="1.2em" text="" />
+                     </children>
+                  </AnchorPane>
+               </top>
             </BorderPane>
          </children>
       </AnchorPane>
