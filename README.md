@@ -1,4 +1,3 @@
-Here’s an updated `README.md` file for the JavaFX PetStore application, focusing on features and excluding the installation section:
 
 ---
 
