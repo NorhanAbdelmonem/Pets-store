@@ -80,7 +80,7 @@ private java.sql.Connection connect;
       alert.setHeaderText(null);
       alert.setContentText("SUCCESFULLY LOGIN");
       alert.showAndWait(); 
-     
+      getData.username=username.getText();
       login.getScene().getWindow().hide();
           Parent root=FXMLLoader.load(getClass().getResource("dashboard.fxml"));
           Stage stage=new Stage();

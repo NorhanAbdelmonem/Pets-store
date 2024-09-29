@@ -21,113 +21,9 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="petstore.dashboardController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane prefHeight="578.0" prefWidth="1041.0">
          <children>
-            <AnchorPane layoutX="233.0" layoutY="38.0" prefHeight="555.0" prefWidth="861.0" visible="false">
-               <children>
-                  <AnchorPane fx:id="availiable_form" prefHeight="561.0" prefWidth="881.0" visible="false">
-                     <children>
-                        <AnchorPane prefHeight="568.0" prefWidth="227.0" style="-fx-background-color: gray;">
-                           <children>
-                              <AnchorPane layoutX="29.0" layoutY="74.0" prefHeight="119.0" prefWidth="144.0">
-                                 <children>
-                                    <ImageView fx:id="availiable_image" fitHeight="135.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@WhatsApp%20Image%202024-09-19%20at%206.07.39%20PM%20(2).jpeg" />
-                                       </image>
-                                    </ImageView>
-                                    <Button fx:id="availiable_btn" layoutX="-1.0" layoutY="98.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="172.0" text="Import">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </AnchorPane>
-                              <Label layoutX="20.0" layoutY="227.0" text="Product Id" />
-                              <TextField fx:id="availiable_id" layoutX="21.0" layoutY="244.0" />
-                              <Label layoutX="20.0" layoutY="277.0" text="Product Name" />
-                              <TextField fx:id="availiable_name" layoutX="21.0" layoutY="300.0" />
-                              <Label layoutX="21.0" layoutY="333.0" text="Status" />
-                              <ComboBox fx:id="availiable_status" layoutX="21.0" layoutY="350.0" prefWidth="150.0" promptText="Choose" />
-                              <Button fx:id="availiable_delete" layoutX="115.0" layoutY="508.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" text="Delete" />
-                              <Button fx:id="availiable_clear" layoutX="20.0" layoutY="508.0" mnemonicParsing="false" prefWidth="55.0" text="Clear" />
-                              <Button fx:id="availiable_update" layoutX="115.0" layoutY="462.0" mnemonicParsing="false" text="Update" />
-                              <Button fx:id="availiable_add" layoutX="20.0" layoutY="462.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" text="Add" />
-                              <Label layoutX="20.0" layoutY="384.0" text="Price" />
-                              <TextField fx:id="availiable_price" layoutX="22.0" layoutY="407.0" promptText="0.0$" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="264.0" layoutY="4.0" prefHeight="546.0" prefWidth="604.0" style="-fx-background-color: gray;">
-                           <children>
-                              <TextField fx:id="availiable_search" layoutX="37.0" layoutY="27.0" prefHeight="38.0" prefWidth="208.0" promptText="Search">
-                                 <font>
-                                    <Font name="Arial" size="15.0" />
-                                 </font>
-                              </TextField>
-                              <FontAwesomeIcon glyphName="SEARCH" layoutX="14.0" layoutY="54.0" size="2em" />
-                              <TableView fx:id="availiable_table" layoutY="101.0" prefHeight="460.0" prefWidth="604.0">
-                                <columns>
-                                  <TableColumn fx:id="availiable_coid" prefWidth="132.0" text="Product Id" />
-                                  <TableColumn fx:id="availiable_coname" prefWidth="154.0" text="Product Name" />
-                                    <TableColumn fx:id="availiable_costatus" prefWidth="156.0" text="Status" />
-                                    <TableColumn fx:id="availiable_coprice" prefWidth="161.0" text="Price" />
-                                </columns>
-                              </TableView>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="purchase_form" layoutX="220.0" layoutY="40.0" prefHeight="561.0" prefWidth="887.0" visible="false">
-               <children>
-                  <AnchorPane layoutX="9.0" layoutY="14.0" prefHeight="538.0" prefWidth="869.0" style="-fx-background-color: white;">
-                     <children>
-                        <AnchorPane layoutX="8.0" layoutY="14.0" prefHeight="189.0" prefWidth="857.0" style="-fx-background-color: gray;">
-                           <children>
-                              <Label layoutX="36.0" layoutY="25.0" prefHeight="24.0" prefWidth="108.0" text="Product Id:">
-                                 <font>
-                                    <Font name="Arial Black" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="36.0" layoutY="72.0" text="Product Name:">
-                                 <font>
-                                    <Font name="Arial Black" size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="36.0" layoutY="112.0" prefHeight="26.0" prefWidth="98.0" text="Quantity:">
-                                 <font>
-                                    <Font name="Arial Black" size="17.0" />
-                                 </font>
-                              </Label>
-                              <ComboBox fx:id="productid" layoutX="161.0" layoutY="24.0" prefWidth="150.0" promptText="Choose" />
-                              <ComboBox fx:id="productname" layoutX="161.0" layoutY="71.0" prefWidth="150.0" promptText="Choose" />
-                              <Spinner fx:id="productquantity" layoutX="162.0" layoutY="112.0" />
-                              <Label layoutX="496.0" layoutY="63.0" prefHeight="17.0" prefWidth="39.0" text="Total:">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="total" layoutX="546.0" layoutY="65.0" prefHeight="17.0" prefWidth="65.0" text="0.0$">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                              <Button fx:id="pay" layoutX="607.0" layoutY="137.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="138.0" text="Pay" />
-                           </children>
-                        </AnchorPane>
-                        <TableView fx:id="table" layoutX="52.0" layoutY="243.0" prefHeight="288.0" prefWidth="655.0">
-                          <columns>
-                            <TableColumn fx:id="tableid" prefWidth="156.0" text="Product Id" />
-                            <TableColumn fx:id="tablename" prefWidth="190.0" text="Product Name" />
-                              <TableColumn fx:id="tablequantity" minWidth="0.0" prefWidth="159.0" text="Ouantity" />
-                              <TableColumn fx:id="tableprice" minWidth="0.0" prefWidth="149.0" text="Price" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
+            <AnchorPane layoutX="226.0" layoutY="56.0" prefHeight="531.0" prefWidth="835.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="main_form" prefHeight="621.0" prefWidth="1052.0">
@@ -142,19 +38,19 @@
                            </font>
                         </Label>
                         <Line endX="100.0" layoutX="115.0" layoutY="202.0" startX="-100.0" />
-                        <Button fx:id="home_btn" layoutX="13.0" layoutY="231.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="188.0" text="Home">
+                        <Button fx:id="home_btn" layoutX="13.0" layoutY="231.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="45.0" prefWidth="188.0" text="Home">
                            <font>
                               <Font name="Arial Black" size="16.0" />
                            </font>
                         </Button>
                         <FontAwesomeIcon glyphName="HOME" layoutX="41.0" layoutY="262.0" size="2em" />
-                        <Button fx:id="available_product_btn" layoutX="13.0" layoutY="278.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="188.0" text="Available goods">
+                        <Button fx:id="available_product_btn" layoutX="13.0" layoutY="278.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="45.0" prefWidth="188.0" text="Available goods">
                            <font>
                               <Font name="Arial Black" size="15.0" />
                            </font>
                         </Button>
                         <FontAwesomeIcon glyphName="CHECK_CIRCLE" layoutX="24.0" layoutY="308.0" size="1.8em" text="" />
-                        <Button fx:id="purchase_btn" layoutX="13.0" layoutY="323.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="188.0" text="Purchase">
+                        <Button fx:id="purchase_btn" layoutX="13.0" layoutY="323.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="45.0" prefWidth="188.0" text="Purchase">
                            <font>
                               <Font name="Arial Black" size="15.0" />
                            </font>
@@ -183,65 +79,170 @@
                <center>
                   <AnchorPane fx:id="home_form" prefHeight="562.0" prefWidth="856.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane layoutX="12.0" layoutY="20.0" prefHeight="171.0" prefWidth="859.0" style="-fx-background-color: white;">
+                        <AnchorPane fx:id="home_form" prefHeight="547.0" prefWidth="882.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane layoutX="14.0" layoutY="8.0" prefHeight="154.0" prefWidth="200.0" style="-fx-background-color: gray;">
+                              <AnchorPane prefHeight="171.0" prefWidth="859.0" style="-fx-background-color: white;">
                                  <children>
-                                    <FontAwesomeIcon glyphName="PAW" layoutX="14.0" layoutY="55.0" size="4em" />
-                                    <Label layoutX="59.0" layoutY="109.0" text="Avalialbe goods">
-                                       <font>
-                                          <Font name="Arial Bold" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="home_available_product" layoutX="152.0" layoutY="19.0" text="0">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                    </Label>
+                                    <AnchorPane layoutX="14.0" layoutY="8.0" prefHeight="154.0" prefWidth="210.0" style="-fx-background-color: gray;">
+                                       <children>
+                                          <FontAwesomeIcon glyphName="PAW" layoutX="14.0" layoutY="55.0" size="4em" />
+                                          <Label layoutX="59.0" layoutY="109.0" text="Availalbe goods">
+                                             <font>
+                                                <Font name="Arial Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="home_available_product" layoutX="152.0" layoutY="19.0" text="0">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="308.0" layoutY="9.0" prefHeight="154.0" prefWidth="232.0" style="-fx-background-color: gray;">
+                                       <children>
+                                          <Label layoutX="88.0" layoutY="108.0" text="Total income">
+                                             <font>
+                                                <Font name="Arial Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="home_totalincome" layoutX="154.0" layoutY="27.0" text="0.0$">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                          </Label>
+                                          <FontAwesomeIcon glyphName="MONEY" layoutX="27.0" layoutY="58.0" size="4em" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="639.0" layoutY="8.0" prefHeight="154.0" prefWidth="200.0" style="-fx-background-color: gray;">
+                                       <children>
+                                          <Label fx:id="home_totalcustomer" layoutX="159.0" layoutY="27.0" prefHeight="38.0" prefWidth="20.0" text="0">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="59.0" layoutY="116.0" text="Total customars">
+                                             <font>
+                                                <Font name="Arial Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <FontAwesomeIcon glyphName="USERS" layoutX="27.0" layoutY="65.0" size="4em" />
+                                       </children>
+                                    </AnchorPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="338.0" layoutY="9.0" prefHeight="154.0" prefWidth="200.0" style="-fx-background-color: gray;">
+                              <AnchorPane layoutY="201.0" prefHeight="275.0" prefWidth="869.0" style="-fx-background-color: white;">
                                  <children>
-                                    <Label layoutX="88.0" layoutY="108.0" text="Total income">
-                                       <font>
-                                          <Font name="Arial Bold" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="home_totalincome" layoutX="154.0" layoutY="27.0" text="0.0$">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                    </Label>
-                                    <FontAwesomeIcon glyphName="MONEY" layoutX="27.0" layoutY="58.0" size="4em" />
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane layoutX="639.0" layoutY="8.0" prefHeight="154.0" prefWidth="200.0" style="-fx-background-color: gray;">
-                                 <children>
-                                    <Label fx:id="home_totalcustomer" layoutX="164.0" layoutY="27.0" text="0">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="59.0" layoutY="116.0" text="Total customars">
-                                       <font>
-                                          <Font name="Arial Bold" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <FontAwesomeIcon glyphName="USERS" layoutX="27.0" layoutY="65.0" size="4em" />
+                                    <BarChart fx:id="income_datachart" layoutX="110.0" layoutY="26.0" prefHeight="287.0" prefWidth="680.0" title="Income Data Chart">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                      </yAxis>
+                                    </BarChart>
                                  </children>
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="229.0" prefHeight="302.0" prefWidth="862.0" style="-fx-background-color: white;">
+                        <AnchorPane fx:id="available_form" prefHeight="546.0" prefWidth="881.0" visible="false">
                            <children>
-                              <BarChart fx:id="income_datachart" layoutX="110.0" layoutY="26.0" prefHeight="287.0" prefWidth="680.0" title="Income Data Chart">
-                                <xAxis>
-                                  <CategoryAxis side="BOTTOM" />
-                                </xAxis>
-                                <yAxis>
-                                  <NumberAxis side="LEFT" />
-                                </yAxis>
-                              </BarChart>
+                              <AnchorPane layoutX="4.0" layoutY="-3.0" prefHeight="551.0" prefWidth="255.0" style="-fx-background-color: gray;">
+                                 <children>
+                                    <AnchorPane layoutX="20.0" layoutY="72.0" prefHeight="119.0" prefWidth="144.0">
+                                       <children>
+                                          <ImageView fx:id="availiable_image" fitHeight="135.0" fitWidth="180.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@WhatsApp%20Image%202024-09-19%20at%206.07.39%20PM%20(2).jpeg" />
+                                             </image>
+                                          </ImageView>
+                                          <Button fx:id="availiable_btn" layoutX="-1.0" layoutY="98.0" mnemonicParsing="false" onAction="#availableFlowersInsertImage" prefHeight="39.0" prefWidth="180.0" text="Import">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </AnchorPane>
+                                    <Label layoutX="20.0" layoutY="227.0" text="Product Id" />
+                                    <TextField fx:id="availiable_id" layoutX="21.0" layoutY="244.0" />
+                                    <Label layoutX="20.0" layoutY="277.0" text="Product Name" />
+                                    <TextField fx:id="availiable_name" layoutX="21.0" layoutY="300.0" />
+                                    <Label layoutX="21.0" layoutY="333.0" text="Status" />
+                                    <ComboBox fx:id="availiable_status" layoutX="21.0" layoutY="350.0" onAction="#availableFlowersStatus" prefWidth="150.0" promptText="Choose" />
+                                    <Button fx:id="availiable_delete" layoutX="115.0" layoutY="508.0" mnemonicParsing="false" onAction="#availableFlowersDelete" prefHeight="25.0" prefWidth="55.0" text="Delete" />
+                                    <Button fx:id="availiable_clear" layoutX="20.0" layoutY="508.0" mnemonicParsing="false" onMouseClicked="#availableFlowersClear" prefWidth="55.0" text="Clear" />
+                                    <Button fx:id="availiable_update" layoutX="115.0" layoutY="462.0" mnemonicParsing="false" onAction="#availableFlowersUpdate" text="Update" />
+                                    <Button fx:id="availiable_add" layoutX="20.0" layoutY="462.0" mnemonicParsing="false" onAction="#availableProductAdd" prefHeight="25.0" prefWidth="55.0" text="Add" />
+                                    <Label layoutX="20.0" layoutY="384.0" text="Price" />
+                                    <TextField fx:id="availiable_price" layoutX="22.0" layoutY="407.0" promptText="0.0$" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="265.0" layoutY="-2.0" prefHeight="551.0" prefWidth="617.0" style="-fx-background-color: gray;">
+                                 <children>
+                                    <TextField fx:id="availiable_search" layoutX="37.0" layoutY="27.0" onMouseClicked="#availableFlowersSearch" prefHeight="38.0" prefWidth="208.0" promptText="Search">
+                                       <font>
+                                          <Font name="Arial" size="15.0" />
+                                       </font>
+                                    </TextField>
+                                    <TableView fx:id="availiable_table" layoutY="101.0" onMouseClicked="#availableFlowersSelect" prefHeight="414.0" prefWidth="613.0">
+                                      <columns>
+                                        <TableColumn fx:id="availiable_coid" prefWidth="132.0" text="Product Id" />
+                                        <TableColumn fx:id="availiable_coname" prefWidth="154.0" text="Product Name" />
+                                          <TableColumn fx:id="availiable_costatus" prefWidth="156.0" text="Status" />
+                                          <TableColumn fx:id="availiable_coprice" prefWidth="144.0" text="Price" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="purchase_form" prefHeight="546.0" prefWidth="881.0" visible="false">
+                           <children>
+                              <AnchorPane layoutX="10.0" layoutY="16.0" prefHeight="502.0" prefWidth="828.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <AnchorPane layoutX="8.0" layoutY="14.0" prefHeight="189.0" prefWidth="857.0" style="-fx-background-color: gray;">
+                                       <children>
+                                          <Label layoutX="36.0" layoutY="25.0" prefHeight="24.0" prefWidth="108.0" text="Product Id:">
+                                             <font>
+                                                <Font name="Arial Black" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="36.0" layoutY="72.0" text="Product Name:">
+                                             <font>
+                                                <Font name="Arial Black" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="36.0" layoutY="112.0" prefHeight="26.0" prefWidth="98.0" text="Quantity:">
+                                             <font>
+                                                <Font name="Arial Black" size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox fx:id="productid" layoutX="161.0" layoutY="24.0" onAction="#purchaseProductId" prefWidth="150.0" promptText="Choose" />
+                                          <ComboBox fx:id="productname" layoutX="161.0" layoutY="71.0" onAction="#purchaseProductName" prefWidth="150.0" promptText="Choose" />
+                                          <Spinner fx:id="productquantity" layoutX="162.0" layoutY="112.0" onMouseClicked="#purchaseQuantity" />
+                                          <Label layoutX="496.0" layoutY="63.0" prefHeight="17.0" prefWidth="39.0" text="Total:">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="total" layoutX="546.0" layoutY="65.0" prefHeight="17.0" prefWidth="65.0" text="0.0$">
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Button fx:id="pay" layoutX="705.0" layoutY="120.0" mnemonicParsing="false" onAction="#purchasePay" prefHeight="30.0" prefWidth="138.0" text="Pay" />
+                                          <Button fx:id="add_cart" layoutX="704.0" layoutY="79.0" mnemonicParsing="false" onAction="#purchaseAddToCart" prefHeight="30.0" prefWidth="137.0" text="Add to cart" />
+                                       </children>
+                                    </AnchorPane>
+                                    <TableView fx:id="table_one" layoutX="51.0" layoutY="222.0" prefHeight="288.0" prefWidth="655.0">
+                                      <columns>
+                                        <TableColumn fx:id="tableid" prefWidth="156.0" text="Product Id" />
+                                        <TableColumn fx:id="tablename" prefWidth="190.0" text="Product Name" />
+                                          <TableColumn fx:id="tablequantity" minWidth="0.0" prefWidth="159.0" text="Ouantity" />
+                                          <TableColumn fx:id="tableprice" minWidth="0.0" prefWidth="149.0" text="Price" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
                      </children>
@@ -250,10 +251,15 @@
                <top>
                   <AnchorPane prefHeight="54.0" prefWidth="1100.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                      <children>
-                        <Button fx:id="close" layoutX="1045.0" layoutY="19.0" mnemonicParsing="false" onAction="#close" prefHeight="21.0" prefWidth="55.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="19.0" />
-                        <Button fx:id="minimize" layoutX="991.0" layoutY="19.0" mnemonicParsing="false" onAction="#minimize" prefHeight="23.0" prefWidth="55.0" />
-                        <FontAwesomeIcon glyphName="CLOSE" layoutX="1067.0" layoutY="36.0" size="1.2em" />
-                        <FontAwesomeIcon glyphName="MINUS" layoutX="1013.0" layoutY="37.0" size="1.2em" text="" />
+                        <Button fx:id="close" layoutX="1045.0" layoutY="2.0" mnemonicParsing="false" onAction="#close" prefHeight="28.0" prefWidth="55.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0" />
+                        <Button fx:id="minimize" layoutX="991.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" prefHeight="28.0" prefWidth="55.0" />
+                        <FontAwesomeIcon glyphName="CLOSE" layoutX="1067.0" layoutY="20.0" size="1.2em" />
+                        <FontAwesomeIcon glyphName="MINUS" layoutX="1013.0" layoutY="20.0" size="1.2em" text="" />
+                        <Label layoutX="7.0" layoutY="8.0" prefHeight="39.0" prefWidth="315.0" text="Pet Store Managment System">
+                           <font>
+                              <Font name="Arial Black" size="18.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </top>
