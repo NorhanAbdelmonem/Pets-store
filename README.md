@@ -24,7 +24,7 @@ A simple pet store desktop application built using **JavaFX**.
 
 - **JavaFX** for building the user interface.
 - **Maven** or **Gradle** for dependency management.
-- **SQLite** or **H2 Database** for data persistence (if applicable).
+- **MYSQL** or **H2 Database** for data persistence (if applicable).
 
 ## Contact
 
