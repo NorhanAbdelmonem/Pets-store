@@ -204,8 +204,9 @@ public class dashboardController implements Initializable {
     }
         public void homeTI(){
         
-        String sql = "SELECT SUM(total) FROM customer_info";
-        
+
+        String sql = "SELECT SUM(total) FROM customer";
+
          connect = database.getCon();
 
         
@@ -227,7 +228,7 @@ public class dashboardController implements Initializable {
         
          public void homeTC(){
         
-        String sql = "SELECT COUNT(id) FROM customer_info";
+        String sql = "SELECT COUNT(id) FROM customer";
         
         connect = database.getCon();
         
@@ -250,7 +251,7 @@ public class dashboardController implements Initializable {
         
         income_datachart.getData().clear();
         
-        String sql = "SELECT date, SUM(total) FROM customer_info GROUP BY date ORDER BY TIMESTAMP(date) ASC LIMIT 7";
+        String sql = "SELECT date, SUM(total) FROM customer GROUP BY date ORDER BY TIMESTAMP(date) ASC LIMIT 7";
         
         connect = database.getCon();
         
@@ -311,7 +312,7 @@ public class dashboardController implements Initializable {
     }
     
     private Image image;
-     public void availableFlowersInsertImage() {
+     public void availableProductsInsertImage() {
 
         FileChooser open = new FileChooser();
         open.setTitle("Open Image File");
@@ -330,22 +331,22 @@ public class dashboardController implements Initializable {
 
     }
     
- public void availableFlowersSelect() {
+ public void availableProductsSelect() {
 
-        productData flower = availiable_table.getSelectionModel().getSelectedItem();
+        productData product = availiable_table.getSelectionModel().getSelectedItem();
         int num = availiable_table.getSelectionModel().getSelectedIndex();
 
         if ((num - 1) < -1) {
             return;
         }
 
-       availiable_id.setText(String.valueOf(flower.getProductId()));
-       availiable_name.setText(flower.getName());
-        availiable_price.setText(String.valueOf(flower.getPrice()));
+       availiable_id.setText(String.valueOf(product.getProductId()));
+       availiable_name.setText(product.getName());
+        availiable_price.setText(String.valueOf(product.getPrice()));
 
-        getData.path = flower.getImage();
+        getData.path = product.getImage();
 
-        String uri = "file:" + flower.getImage();
+        String uri = "file:" + product.getImage();
 
         image = new Image(uri, 180, 135, false, true);
         availiable_image.setImage(image);
@@ -353,71 +354,82 @@ public class dashboardController implements Initializable {
     }
     
     
-    public void availableFlowersUpdate() {
+    public void availableProductsUpdate() {
 
-        String uri = getData.path;
-        if (!(uri == null || uri == "")) {
-            uri = uri.replace("\\", "\\\\");
-        }
+   
+    productData selectedProduct = availiable_table.getSelectionModel().getSelectedItem();
+    if (selectedProduct == null) {
+        System.out.println("No product selected");
+        return;
+    }
 
-        String sql = "UPDATE product SET name = '"
-                + availiable_name.getText() + "', status = '"
-                + availiable_status.getSelectionModel().getSelectedItem() + "', price = '"
-                + availiable_price.getText() + "', image = '"
-                + uri + "' WHERE product_id = '" + availiable_id.getText() + "'";
+ 
+    int oldProductId = selectedProduct.getProductId();
 
-        connect = database.getCon();
-        if (connect == null) {
-    System.out.println("Failed to establish a database connection.");
-    return;
-}
+    String uri = getData.path;
+    if (uri != null && !uri.isEmpty()) {
+        uri = uri.replace("\\", "\\\\");
+    }
 
-        try {
-            Alert alert;
+    String sql = "UPDATE product SET product_id = '"
+            + availiable_id.getText() +
+            "', name = '"
+            + availiable_name.getText() + "', status = '"
+            + availiable_status.getSelectionModel().getSelectedItem() + "', price = '"
+            + availiable_price.getText() + "', image = '"
+            + uri + "' WHERE product_id = '" + oldProductId + "'";
 
-            if (availiable_id.getText().isEmpty()
-                    || availiable_name.getText().isEmpty()
-                    || availiable_status.getSelectionModel().getSelectedItem() == null
-                    || availiable_price.getText().isEmpty()
-                    || uri == null || uri == "" || getData.path == null || getData.path == "") {
+    connect = database.getCon();
+    if (connect == null) {
+        System.out.println("Failed to establish a database connection.");
+        return;
+    }
 
-                alert = new Alert(AlertType.ERROR);
-                alert.setTitle("Error Message");
+    try {
+        Alert alert;
+
+        if (availiable_id.getText().isEmpty()
+                || availiable_name.getText().isEmpty()
+                || availiable_status.getSelectionModel().getSelectedItem() == null
+                || availiable_price.getText().isEmpty()
+                || uri == null || uri.isEmpty()
+                || getData.path == null || getData.path.isEmpty()) {
+
+            alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill all blank fields");
+            alert.showAndWait();
+
+        } else {
+            alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Are you sure you want to UPDATE product ID: " + oldProductId + " to " + availiable_id.getText() + "?");
+            Optional<ButtonType> option = alert.showAndWait();
+
+            if (option.get().equals(ButtonType.OK)) {
+                Statement statement = connect.createStatement();
+                statement.executeUpdate(sql);
+
+                alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Information Message");
                 alert.setHeaderText(null);
-                alert.setContentText("Please fill all blank fields");
+                alert.setContentText("Successfully Updated!");
                 alert.showAndWait();
 
-            } else {
-                alert = new Alert(AlertType.CONFIRMATION);
-                alert.setTitle("Confirmation Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Are you sure you want to UPDATE product ID: " + availiable_id.getText() + "?");
-                Optional<ButtonType> option = alert.showAndWait();
+                
+                availableProductShowListData();
 
-                if (option.get().equals(ButtonType.OK)) {
-                    Statement statement = connect.createStatement();
-                    statement.executeUpdate(sql);
-
-                    alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle("Information Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Successfully Updated!");
-                    alert.showAndWait();
-
-                    // SHOW UPDATED TABLEVIEW
-                    availableProductShowListData();
-
-                    // CLEAR ALL FIELDS
-                    availableFlowersClear();
-                }
-
+               
+                availableProductsClear();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-
+    } catch (Exception e) {
+        e.printStackTrace();
     }
-    
+}
+
     
     
     public ObservableList<customerData> purchaseListData() {
@@ -425,7 +437,7 @@ public class dashboardController implements Initializable {
 
         ObservableList<customerData> listData = FXCollections.observableArrayList();
 
-        String sql = "SELECT * FROM customer WHERE customer_id = '" + customerId + "'";
+        String sql = "SELECT * FROM orders WHERE customer_id = '" + customerId + "'";
 
         connect = database.getCon();
 
@@ -495,7 +507,7 @@ public class dashboardController implements Initializable {
         public void purchaseAddToCart() {
         purchaseCustomerId();
 
-        String sql = "INSERT INTO customer (customer_id, product_id, name, quantity, price, date) "
+        String sql = "INSERT INTO orders  (customer_id, product_id, name, quantity, price, date) "
                 + "VALUES(?,?,?,?,?,?)";
 
         connect = database.getCon();
@@ -555,7 +567,7 @@ public class dashboardController implements Initializable {
            
     public void purchasePay(){
         
-        String sql = "INSERT INTO customer_info (customer_id, total, date) VALUES(?,?,?)";
+        String sql = "INSERT INTO customer (customer_id, total, date) VALUES(?,?,?)";
         
         connect = database.getCon();
         
@@ -602,16 +614,10 @@ public class dashboardController implements Initializable {
     }
     
     
-        
-        
-        
-        
-        
-        
         private double totalP = 0;
     public void purchaseDisplayTotal(){
         purchaseCustomerId();
-        String sql = "SELECT SUM(price) FROM customer WHERE customer_id = '"+customerId+"'";
+        String sql = "SELECT SUM(price) FROM orders WHERE customer_id = '"+customerId+"'";
         
         connect = database.getCon();
         
@@ -637,7 +643,7 @@ public class dashboardController implements Initializable {
 
     public void purchaseCustomerId() {
 
-        String sql = "SELECT MAX(customer_id) FROM customer";
+        String sql = "SELECT MAX(customer_id) FROM orders";
 
         connect = database.getCon();
 
@@ -651,7 +657,7 @@ public class dashboardController implements Initializable {
 
             int countData = 0;
 
-            String checkInfo = "SELECT MAX(customer_id) FROM customer_info";
+            String checkInfo = "SELECT MAX(customer_id) FROM customer";
 
             prepare = connect.prepareStatement(checkInfo);
             result = prepare.executeQuery();
@@ -707,52 +713,9 @@ public class dashboardController implements Initializable {
         qty = productquantity.getValue();
     }
 
+  
     
-    /*
-         public void availableFlowersSearch() {
-
-        FilteredList<productData> filter = new FilteredList<>(availableProductList, e -> true);
-
-        availiable_search.textProperty().addListener((Observable, oldValue, newValue) -> {
-
-            filter.setPredicate(predicateProductData -> {
-
-                if (newValue.isEmpty() || newValue == null) {
-                    return true;
-                }
-
-                String searchKey = newValue.toLowerCase();
-
-                if (predicateProductData.getProductId().toString().contains(searchKey)) {
-                    return true;
-                } else if (predicateProductData.getName().toString().toLowerCase().contains(searchKey)) {
-                    return true;
-                } else if (predicateProductData.getStatus().toLowerCase().contains(searchKey)) {
-                    return true;
-                } else if (predicateProductData.getPrice().toString().contains(searchKey)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
-
-        });
-// تحقق من عدد العناصر في القائمة بعد تحميل البيانات
-System.out.println("عدد المنتجات المحملة: " + availableProductList.size());
-
-        SortedList<productData> sortList = new SortedList<>(filter);
-
-        sortList.comparatorProperty().bind(availiable_table.comparatorProperty());
-
-        availiable_table.setItems(sortList);
-
-     }
-
-    
-    
-    */
-    
-   public void availableFlowersSearch() {
+   public void availableProductsSearch() {
     FilteredList<productData> filter = new FilteredList<>(availableProductList, e -> true);
 
     // Attach listener to search field
@@ -781,7 +744,7 @@ System.out.println("عدد المنتجات المحملة: " + availableProduct
     availiable_table.setItems(sortList);
 }
 
-     public void availableFlowersDelete() {
+     public void availableProductsDelete() {
 
         String sql = "DELETE FROM product WHERE product_id = '"
                 + availiable_id.getText() + "'";
@@ -824,7 +787,7 @@ System.out.println("عدد المنتجات المحملة: " + availableProduct
                     availableProductShowListData();
 
                     // CLEAR ALL FIELDS
-                    availableFlowersClear();
+                    availableProductsClear();
                 }
 
             }
@@ -859,8 +822,8 @@ System.out.println("عدد المنتجات المحملة: " + availableProduct
             available_form.setVisible(true);
             purchase_form.setVisible(false);
             availableProductShowListData();
-            availableFlowersStatus();
-            availableFlowersSearch();
+            availableProductsStatus();
+            availableProductsSearch();
         }
         else if (event.getSource() == purchase_btn) {
             home_form.setVisible(false);
@@ -901,7 +864,7 @@ System.out.println("عدد المنتجات المحملة: " + availableProduct
                 alert.showAndWait();
 
             } else {
-                // CHECK IF THE FLOWER ID IS ALREADY EXIST
+                // CHECK IF THE Product ID IS ALREADY EXIST
                 String checkData = "SELECT product_id FROM product WHERE product_id = '"
                         + availiable_id.getText() + "'";
 
@@ -932,7 +895,7 @@ System.out.println("عدد المنتجات المحملة: " + availableProduct
 
                     prepare.executeUpdate();
                     availableProductShowListData();
-                    availableFlowersClear();
+                    availableProductsClear();
 
                     alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Information Message");
@@ -953,7 +916,7 @@ System.out.println("عدد المنتجات المحملة: " + availableProduct
   
   
     String listStatus[] = {"Available", "Not Available"};
-      public void availableFlowersStatus() {
+      public void availableProductsStatus() {
 
         List<String> listS = new ArrayList<>();
 
@@ -965,9 +928,11 @@ System.out.println("عدد المنتجات المحملة: " + availableProduct
        availiable_status.setItems(listData);
 
     }
-  public void availableFlowersClear() {
+  public void availableProductsClear() {
 
-        availiable_id.setText("");
+        availiable_id.setText("");       
+        availiable_name.setText("");
+
        availiable_id.setText("");
         availiable_status.getSelectionModel().clearSelection();
        availiable_price.setText("");
@@ -976,57 +941,6 @@ System.out.println("عدد المنتجات المحملة: " + availableProduct
       availiable_image .setImage(null);
 
     }
-  
-  
-  /*
-   public void logout(){
-     try{
-    Alert  alert=new Alert(Alert.AlertType.CONFIRMATION);
-      alert.setTitle("CONFIRM MESSAGE");
-      alert.setHeaderText(null);
-      alert.setContentText("Are You sure you want to Logout?");
-       alert.showAndWait();
-    Optional<ButtonType>option=alert.showAndWait();
-    if(option.get().equals(ButtonType.OK)){ logout_btn.getScene().getWindow().hide();
-     Parent root=FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-       
-          Scene scene =new Scene(root);
-      Stage stage=new Stage();
-      
-      root.setOnMousePressed((MouseEvent event)->{
-        x=event.getSceneX();
-                y=event.getSceneY();
-               
-        });
-         root.setOnMouseDragged((MouseEvent event)->{
-         stage.setX(event.getScreenX() - x);
-                  stage.setY(event.getScreenY() - y);
-                  stage.setOpacity(.8);
-
-         });
-         root.setOnMouseReleased((MouseEvent event)->{
-stage.setOpacity(1); 
-});
-         stage.initStyle(StageStyle.TRANSPARENT);
-         stage.setScene(scene);
-         stage.show();
-         
-         
-
-    }
-     
-     }
-     catch(Exception e){
-     e.printStackTrace();
-     }
-     
-     }
-      */
-  
-  
-  
-  
-  
   
     public void logout() {
 
@@ -1091,7 +1005,7 @@ stage.setOpacity(1);
   
         displayUsername(); 
 availableProductShowListData();
-availableFlowersStatus();
+availableProductsStatus();
     purchaseShowListData();
     purchaseProductId();
       purchaseProductName();

@@ -155,7 +155,7 @@
                                                 <Image url="@WhatsApp%20Image%202024-09-19%20at%206.07.39%20PM%20(2).jpeg" />
                                              </image>
                                           </ImageView>
-                                          <Button fx:id="availiable_btn" layoutX="-1.0" layoutY="98.0" mnemonicParsing="false" onAction="#availableFlowersInsertImage" prefHeight="39.0" prefWidth="180.0" text="Import">
+                                          <Button fx:id="availiable_btn" layoutX="-1.0" layoutY="98.0" mnemonicParsing="false" onAction="#availableProductsInsertImage" prefHeight="39.0" prefWidth="180.0" text="Import">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
@@ -167,10 +167,10 @@
                                     <Label layoutX="20.0" layoutY="277.0" text="Product Name" />
                                     <TextField fx:id="availiable_name" layoutX="21.0" layoutY="300.0" />
                                     <Label layoutX="21.0" layoutY="333.0" text="Status" />
-                                    <ComboBox fx:id="availiable_status" layoutX="21.0" layoutY="350.0" onAction="#availableFlowersStatus" prefWidth="150.0" promptText="Choose" />
-                                    <Button fx:id="availiable_delete" layoutX="115.0" layoutY="508.0" mnemonicParsing="false" onAction="#availableFlowersDelete" prefHeight="25.0" prefWidth="55.0" text="Delete" />
-                                    <Button fx:id="availiable_clear" layoutX="20.0" layoutY="508.0" mnemonicParsing="false" onMouseClicked="#availableFlowersClear" prefWidth="55.0" text="Clear" />
-                                    <Button fx:id="availiable_update" layoutX="115.0" layoutY="462.0" mnemonicParsing="false" onAction="#availableFlowersUpdate" text="Update" />
+                                    <ComboBox fx:id="availiable_status" layoutX="21.0" layoutY="350.0" onAction="#availableProductsStatus" prefWidth="150.0" promptText="Choose" />
+                                    <Button fx:id="availiable_delete" layoutX="115.0" layoutY="508.0" mnemonicParsing="false" onAction="#availableProductsDelete" prefHeight="25.0" prefWidth="55.0" text="Delete" />
+                                    <Button fx:id="availiable_clear" layoutX="20.0" layoutY="508.0" mnemonicParsing="false" onMouseClicked="#availableProductsClear" prefWidth="55.0" text="Clear" />
+                                    <Button fx:id="availiable_update" layoutX="115.0" layoutY="462.0" mnemonicParsing="false" onAction="#availableProductsUpdate" text="Update" />
                                     <Button fx:id="availiable_add" layoutX="20.0" layoutY="462.0" mnemonicParsing="false" onAction="#availableProductAdd" prefHeight="25.0" prefWidth="55.0" text="Add" />
                                     <Label layoutX="20.0" layoutY="384.0" text="Price" />
                                     <TextField fx:id="availiable_price" layoutX="22.0" layoutY="407.0" promptText="0.0$" />
@@ -178,12 +178,12 @@
                               </AnchorPane>
                               <AnchorPane layoutX="265.0" layoutY="-2.0" prefHeight="551.0" prefWidth="617.0" style="-fx-background-color: gray;">
                                  <children>
-                                    <TextField fx:id="availiable_search" layoutX="37.0" layoutY="27.0" onMouseClicked="#availableFlowersSearch" prefHeight="38.0" prefWidth="208.0" promptText="Search">
+                                    <TextField fx:id="availiable_search" layoutX="37.0" layoutY="27.0" onMouseClicked="#availableProductsSearch" prefHeight="38.0" prefWidth="208.0" promptText="Search">
                                        <font>
                                           <Font name="Arial" size="15.0" />
                                        </font>
                                     </TextField>
-                                    <TableView fx:id="availiable_table" layoutY="101.0" onMouseClicked="#availableFlowersSelect" prefHeight="414.0" prefWidth="613.0">
+                                    <TableView fx:id="availiable_table" layoutY="101.0" onMouseClicked="#availableProductsSelect" prefHeight="414.0" prefWidth="613.0">
                                       <columns>
                                         <TableColumn fx:id="availiable_coid" prefWidth="132.0" text="Product Id" />
                                         <TableColumn fx:id="availiable_coname" prefWidth="154.0" text="Product Name" />

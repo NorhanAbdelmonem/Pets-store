@@ -44,7 +44,7 @@
                         <Image url="@WhatsApp%20Image%202024-09-19%20at%206.07.39%20PM%20(2).jpeg" />
                      </image>
                   </ImageView>
-                  <Label layoutX="14.0" layoutY="254.0" text="HI , Welcome To Batates' Pet Store.">
+                  <Label layoutX="14.0" layoutY="254.0" text="HI , Welcome To Our Pet Store.">
                      <font>
                         <Font name="Arial" size="17.0" />
                      </font>
