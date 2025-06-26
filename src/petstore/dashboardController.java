@@ -205,7 +205,7 @@ public class dashboardController implements Initializable {
         public void homeTI(){
         
 
-        String sql = "SELECT SUM(total) FROM customer";
+        String sql = "SELECT SUM(total) FROM purchases";
 
          connect = database.getCon();
 
@@ -225,33 +225,39 @@ public class dashboardController implements Initializable {
         
     }
         
-        
+
          public void homeTC(){
         
-        String sql = "SELECT COUNT(id) FROM customer";
-        
-        connect = database.getCon();
+
+        String sql = "SELECT COUNT(id) as  total FROM purchases";
+
+         connect = database.getCon();
+
         
         try{
-            int countTC = 0;
-            
+            double countTI = 0;
             Statement statement = connect.createStatement();
             result = statement.executeQuery(sql);
             
             if(result.next()){
-                countTC = result.getInt("COUNT(id)");
+                countTI = result.getInt("total");
             }
-            home_totalcustomer.setText(String.valueOf(countTC));
+            
+            home_totalcustomer.setText(String.valueOf(countTI));
             
         }catch(Exception e){e.printStackTrace();}
         
     }
+        
+        
+        
+     
     
      public void homeChart(){
         
         income_datachart.getData().clear();
         
-        String sql = "SELECT date, SUM(total) FROM customer GROUP BY date ORDER BY TIMESTAMP(date) ASC LIMIT 7";
+        String sql = "SELECT date, SUM(total) FROM purchases GROUP BY date ORDER BY TIMESTAMP(date) ASC LIMIT 7";
         
         connect = database.getCon();
         
@@ -437,7 +443,7 @@ public class dashboardController implements Initializable {
 
         ObservableList<customerData> listData = FXCollections.observableArrayList();
 
-        String sql = "SELECT * FROM orders WHERE customer_id = '" + customerId + "'";
+        String sql = "SELECT * FROM carts WHERE customer_id = '" + customerId + "'";
 
         connect = database.getCon();
 
@@ -507,7 +513,7 @@ public class dashboardController implements Initializable {
         public void purchaseAddToCart() {
         purchaseCustomerId();
 
-        String sql = "INSERT INTO orders  (customer_id, product_id, name, quantity, price, date) "
+        String sql = "INSERT INTO carts  (customer_id, product_id, name, quantity, price, date) "
                 + "VALUES(?,?,?,?,?,?)";
 
         connect = database.getCon();
@@ -567,7 +573,7 @@ public class dashboardController implements Initializable {
            
     public void purchasePay(){
         
-        String sql = "INSERT INTO customer (customer_id, total, date) VALUES(?,?,?)";
+        String sql = "INSERT INTO purchases (customer_id, total, date) VALUES(?,?,?)";
         
         connect = database.getCon();
         
@@ -617,7 +623,7 @@ public class dashboardController implements Initializable {
         private double totalP = 0;
     public void purchaseDisplayTotal(){
         purchaseCustomerId();
-        String sql = "SELECT SUM(price) FROM orders WHERE customer_id = '"+customerId+"'";
+        String sql = "SELECT SUM(price) FROM carts WHERE customer_id = '"+customerId+"'";
         
         connect = database.getCon();
         
@@ -643,7 +649,7 @@ public class dashboardController implements Initializable {
 
     public void purchaseCustomerId() {
 
-        String sql = "SELECT MAX(customer_id) FROM orders";
+        String sql = "SELECT MAX(customer_id) FROM carts";
 
         connect = database.getCon();
 
@@ -657,7 +663,7 @@ public class dashboardController implements Initializable {
 
             int countData = 0;
 
-            String checkInfo = "SELECT MAX(customer_id) FROM customer";
+            String checkInfo = "SELECT MAX(customer_id) FROM purchases";
 
             prepare = connect.prepareStatement(checkInfo);
             result = prepare.executeQuery();
@@ -1004,15 +1010,14 @@ public class dashboardController implements Initializable {
     
   
         displayUsername(); 
-availableProductShowListData();
-availableProductsStatus();
-    purchaseShowListData();
-    purchaseProductId();
-      purchaseProductName();
-      
-     purchaseSpinner();
-     purchaseDisplayTotal();
-     homeAF();
+        availableProductShowListData();
+        availableProductsStatus();
+        purchaseShowListData();
+        purchaseProductId();
+        purchaseProductName();  
+        purchaseSpinner();
+        purchaseDisplayTotal();
+        homeAF();
         homeTI();
         homeTC();
         homeChart();
