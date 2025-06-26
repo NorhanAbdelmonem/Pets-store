@@ -32,9 +32,11 @@ Here are some screenshots from the application:
 
 <p align="center">
   <img src="screens/1.jpg" width="400"/>
+  <br>
   <img src="screens/2.jpg" width="400"/>
   <br/>
   <img src="screens/3.jpg" width="400"/>
+  <br>
   <img src="screens/4.jpg" width="400"/>
 </p>
 ## Contact
